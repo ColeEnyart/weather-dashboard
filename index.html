@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-primary justify-content-center">Weather Dashboard</nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row col-12">
+            <form class="container-fluid col-2 first">
+                <div class="form-group col-12">
+                    <label for="searchBox">Search for a City:</label>
+                    <input type="text" class="form-control col-12" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="San Diego">
+                </div>
+                <button type="submit" class="btn btn-primary col-12">Search</button>
+            </form>
+            <div class="container-fluid col-10 second">
+                <div class="row border border-primary">
+                    <div class="card col-12">
+                        <p>Atlanta</p>
+                        <p>Temp:</p>
+                        <p>Wind:</p>
+                        <p>Humidity:</p>
+                        <p>UV Index:</p>
+                    </div>
+                </div>
+
+                <div class="row">5-Day Forecast:</div>
+
+                <div class="row col-12 justify-content-around">
+                    <div class="card col-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Date</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Icon</h6>
+                          <p class="card-text">Temp:</p>
+                          <p class="card-text">Wind:</p>
+                          <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="card col-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Date</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Icon</h6>
+                          <p class="card-text">Temp:</p>
+                          <p class="card-text">Wind:</p>
+                          <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="card col-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Date</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Icon</h6>
+                          <p class="card-text">Temp:</p>
+                          <p class="card-text">Wind:</p>
+                          <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="card col-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Date</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Icon</h6>
+                          <p class="card-text">Temp:</p>
+                          <p class="card-text">Wind:</p>
+                          <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="card col-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Date</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Icon</h6>
+                          <p class="card-text">Temp:</p>
+                          <p class="card-text">Wind:</p>
+                          <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

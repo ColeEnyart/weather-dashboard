@@ -1,0 +1,19 @@
+nav {
+    background-image: linear-gradient(90deg, #5775ff 0%, #7c23c0 100%);
+    font-size: xx-large;
+    color: white;
+    font-weight: bold;
+
+}
+
+.first {
+    /* outline: 1px solid black; */
+}
+
+.second {
+    /* outline: 1px solid black; */
+}
+
+.card-body {
+    background-color: cornflowerblue;
+}
