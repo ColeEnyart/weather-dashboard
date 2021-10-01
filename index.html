@@ -13,20 +13,25 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark bg-primary justify-content-center">Weather Dashboard</nav>
+        <nav class="navbar justify-content-center">Weather Dashboard</nav>
     </header>
 
     <div class="container-fluid">
         <div class="row col-12">
+
             <form class="container-fluid col-2 first">
+
                 <div class="form-group col-12">
                     <label for="searchBox">Search for a City:</label>
-                    <input type="text" class="form-control col-12" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="San Diego">
+                    <input type="text" class="form-control col-12" id="searchText" placeholder="San Diego">
                 </div>
-                <button type="submit" class="btn btn-primary col-12">Search</button>
+
+                <button class="btn btn-primary col-12" id="button">Search</button>
+
             </form>
+
             <div class="container-fluid col-10 second">
+
                 <div class="row border border-primary">
                     <div class="card col-12">
                         <p>Atlanta</p>
@@ -90,10 +95,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
