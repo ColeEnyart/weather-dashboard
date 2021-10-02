@@ -7,7 +7,7 @@ var currentIconEl = $(".img");
 var currentTempEl = $(".currentTemp");
 var currentWindEl = $(".currentWind");
 var currentHumidityEl = $(".currentHumidity");
-var currentUviEl = $(".currentUv");
+var currentUviEl = $(".currentUvi");
 
 var forecastDateEl = $(".forecastDate");
 var forecastIconEl = $(".forecastIcon");
@@ -42,15 +42,21 @@ function populateForecast(data) {
 function getLatLong(event) {
     event.preventDefault();
     cityName = searchTextEl.val();
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    var url = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
     fetch(url)
     .then( function(response) {
         if (response.ok) {
             response.json().then( function(data) {
+                console.log(data);
+
+                for(var i = 3; i < data.list.length; i += 8) {
+                    var forecastDate = data.list[i].dt_txt;
+                }
+                forecastDateEl.append(forecastDate);
             
-                var lat = data.coord.lat;
+                var lat = data.city.coord.lat;
                 console.log(lat);
-                var lon = data.coord.lon;
+                var lon = data.city.coord.lon;
                 console.log(lon);
                 
                 getCityData(lat, lon);
@@ -74,12 +80,7 @@ function getCityData (lat, lon) {
                 var currentWind = data.current.wind_speed;
                 var currentHumidity = data.current.humidity;
                 var currentUvi = data.current.uvi;
-                console.log(currentCity);
-                console.log(currentDate);
-                console.log(currentIcon);
-                console.log("Temp: " + currentTemp);
-                console.log("Wind: " + currentWind);
-                console.log("Humidity: " + currentHumidity);
+
                 console.log("UV Index: " + currentUvi);
 
                 currentCityEl.append(currentCity);
@@ -89,7 +90,17 @@ function getCityData (lat, lon) {
                 currentWindEl.append("Wind: " + currentWind + " MPH");
                 currentHumidityEl.append("Humidity: " + currentHumidity + " %");
                 currentUviEl.append("UV Index: " + currentUvi);
-                
+
+                for(var i = 0; i < data.daily.length; i ++) {
+                    var forecastIcon = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
+                    var forecastTemp = data.current.temp;
+                    var forecastWind = data.current.wind_speed;
+                    var forecastHumidity = data.current.humidity;
+                }
+                forecastIconEl.attr("src", forecastIcon);
+                forecastTempEl.append("Temp: " + forecastTemp + " &deg;F");
+                forecastWindEl.append("Wind: " + forecastWind + " MPH");
+                forecastHumidityEl.append("Humidity: " + forecastHumidity + " %");
                 
                 
                 
@@ -99,3 +110,13 @@ function getCityData (lat, lon) {
 }
 
 searchButtonEl.on("click", getLatLong);
+
+
+
+  /* console.log(currentCity);
+    console.log(currentDate);
+    console.log(currentIcon);
+    console.log("Temp: " + currentTemp);
+    console.log("Wind: " + currentWind);
+    console.log("Humidity: " + currentHumidity);
+    console.log("UV Index: " + currentUvi); */
