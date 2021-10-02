@@ -2,11 +2,12 @@ var searchButtonEl = $("#button");
 var searchTextEl = $("#searchText");
 
 var currentCityEl = $(".currentCity");
+var currentDateEl = $(".currentDate");
 var currentIconEl = $(".img");
 var currentTempEl = $(".currentTemp");
 var currentWindEl = $(".currentWind");
 var currentHumidityEl = $(".currentHumidity");
-var currentUvEl = $(".currentUv");
+var currentUviEl = $(".currentUv");
 
 var forecastDateEl = $(".forecastDate");
 var forecastIconEl = $(".forecastIcon");
@@ -16,24 +17,6 @@ var forecastHumidityEl = $(".forecastHumidity");
 
 var apiKey = "2d3a1cce99e743cff7d93da2fd8af998";
 var cityName = "";
-
-function populateCurrent(data) {
-    var test1 = data.name;
-    var test1a = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
-    var test2 = data.main.temp;
-    var test3 = data.wind.speed;
-    var test4 = data.main.humidity;
-    console.log(test1);
-    console.log("Temp: " + test2);
-    console.log("Wind: " + test3);
-    console.log("Humidity: " + test4);
-
-    currentCityEl.append(test1);
-    currentIconEl.attr("src", test1a);
-    currentTempEl.append("Temp: " + test2 + " &deg;F");
-    currentWindEl.append("Wind: " + test3 + " MPH");
-    currentHumidityEl.append("Humidity: " + test4 + " %");
-}
 
 function populateForecast(data) {
     for(var i = 3; i < data.list.length; i += 8) {
@@ -56,17 +39,15 @@ function populateForecast(data) {
     forecastHumidityEl.append("Humidity: " + five4 + " %");
 }
 
-function getLatLong(cityName, event) {
+function getLatLong(event) {
     event.preventDefault();
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + /* cityName */"San Diego" + "&appid=" + apiKey;
+    cityName = searchTextEl.val();
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
     fetch(url)
     .then( function(response) {
         if (response.ok) {
             response.json().then( function(data) {
-                /* console.log(data); */
-                
-                var q1 = data.coord;
-                console.log(q1);
+            
                 var lat = data.coord.lat;
                 console.log(lat);
                 var lon = data.coord.lon;
@@ -85,6 +66,29 @@ function getCityData (lat, lon) {
         if (response.ok) {
             response.json().then( function(data) {
                 console.log(data);
+
+                var currentCity = cityName;
+                var currentDate = data.current.dt;
+                var currentIcon = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
+                var currentTemp = data.current.temp;
+                var currentWind = data.current.wind_speed;
+                var currentHumidity = data.current.humidity;
+                var currentUvi = data.current.uvi;
+                console.log(currentCity);
+                console.log(currentDate);
+                console.log(currentIcon);
+                console.log("Temp: " + currentTemp);
+                console.log("Wind: " + currentWind);
+                console.log("Humidity: " + currentHumidity);
+                console.log("UV Index: " + currentUvi);
+
+                currentCityEl.append(currentCity);
+                currentDateEl.append(currentDate);
+                currentIconEl.attr("src", currentIcon);
+                currentTempEl.append("Temp: " + currentTemp + " &deg;F");
+                currentWindEl.append("Wind: " + currentWind + " MPH");
+                currentHumidityEl.append("Humidity: " + currentHumidity + " %");
+                currentUviEl.append("UV Index: " + currentUvi);
                 
                 
                 

@@ -15,6 +15,11 @@ label {
 .currentCity {
     font-size: 2em;
     font-weight: bold;
+    padding-top: .25em;
+}
+
+.currentUvi {
+    padding-bottom: .25em;
 }
 
 .forecastText {
