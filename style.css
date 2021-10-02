@@ -29,6 +29,10 @@ label {
     margin-bottom: .5em;
 }
 
+.forecastDate {
+    font-size: 1.5em;
+}
+
 .first {
     margin-left: 0;
     margin-right: 2em;
@@ -36,4 +40,8 @@ label {
 
 .day {
     background-color: rgb(44, 63, 97);
+}
+
+.addedButton {
+    margin-top: 1em;
 }
