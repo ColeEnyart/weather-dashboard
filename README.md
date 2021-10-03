@@ -12,4 +12,4 @@ Uses:
 
 ## Screenshot
 
-<img src="./images/weather-dashboard.png" width="800" />
+<img src="./assets/images/weather-dashboard.png" width="800" />
