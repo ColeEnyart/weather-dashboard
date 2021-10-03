@@ -45,3 +45,8 @@ label {
 .addedButton {
     margin-top: 1em;
 }
+
+.searchHistory {
+    margin: 0;
+    padding: 0;
+}

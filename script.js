@@ -44,12 +44,9 @@ function populateForecast(data) {
 
 }
 
-function getLatLong(event) {
-    event.preventDefault();
+function search(cityName) {
 
     $("p").empty();
-
-    cityName = searchTextEl.val();
 
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey + "&units=imperial";
     fetch(url)
@@ -61,14 +58,14 @@ function getLatLong(event) {
                     var lon = data.city.coord.lon;
 
                     populateForecast(data);
-                    getCityData(lat, lon);
-                    addButton();
+                    getCityData(cityName, lat, lon);
+                    addCity(cityName);
                 })
             }
         })
 }
 
-function getCityData(lat, lon) {
+function getCityData(cityName, lat, lon) {
     var url2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
     fetch(url2)
         .then(function (response) {
@@ -95,11 +92,6 @@ function getCityData(lat, lon) {
         })
 }
 
-function addButton() {
-    $(document).ready(function() {
-        $('.first').append('<button class="btn btn-secondary col-12 addedButton">' + cityName +'</button>');
-    });
-}
 
 Date.prototype.toShortDate = function(){
     return (this.getMonth() + 1) + 
@@ -126,26 +118,53 @@ var history = ["Austin", "Chicago", "New York"];
 
 function addCity(cityName) {
 
-    var saved = localStorage.getItem('city');
+    const key = 'Search History';
 
-    if (saved === null) {
-        localStorage.setItem('city', history);
-        return;
+    var searchHistory = JSON.parse(localStorage.getItem(key) || "[]");
+
+    for(var i = 0; i < searchHistory.length; i++) {
+        if(cityName === searchHistory[i]) {
+            return;
+        }
     }
 
-    var city = JSON.parse(saved);
+    searchHistory.push(cityName);
 
-    city.push(history);
+    localStorage.setItem(key, JSON.stringify(searchHistory));
 
-
+    displaySearchHistory();
 }
 
 function displaySearchHistory() {
 
+    const key = 'Search History';
+
+    var searchHistory = JSON.parse(localStorage.getItem(key) || "[]");
+
+    var buttons = [];
+
+    for(var i = 0; i < searchHistory.length; i++) {
+        buttons.push('<button class="btn btn-secondary col-12 addedButton">' + searchHistory[i] +'</button>');
+    }
+
+    $('.searchHistory').html(buttons.join(""));
 }
 
+$(document).ready(function() {
+    displaySearchHistory();
+    
+    $('form.first').submit(function(event) {
+        event.preventDefault();
 
+        console.log(event.originalEvent.submitter);
 
+        var cityName = event.originalEvent.submitter.textContent;
 
-searchButtonEl.on("click", getLatLong);
-addedButtonEl.on("click", getLatLong);
+        if(cityName === "Search") {
+            cityName = searchTextEl.val();
+        }
+
+        search(cityName);
+       
+    })
+}) 
