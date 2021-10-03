@@ -18,6 +18,14 @@ label {
     padding-top: .25em;
 }
 
+.currentDate {
+    font-size: 2em;
+    font-weight: bold;
+    padding-top: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
 .currentUvi {
     padding-bottom: .25em;
 }

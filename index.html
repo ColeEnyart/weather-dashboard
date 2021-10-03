@@ -19,8 +19,8 @@
     <div class="container-fluid p-0">
         <div class="row col-12 m-0 p-0">
 
+            <!-- User input and button selection area -->
             <form class="container-fluid col-3 first p-1">
-
                 <div class="form-group col-12 p-0">
                     <label for="searchBox">Search for a City:</label>
                     <input type="text" class="form-control col-12 p-0" id="searchText" placeholder="San Diego">
@@ -28,11 +28,12 @@
 
                 <button class="btn btn-primary col-12" id="button">Search</button>
                 <div class="searchHistory"></div>
-
             </form>
 
+            <!-- Display weather for selected city -->
             <div class="container-fluid col-8 second p-0 m-0">
 
+                <!-- Display current weather for selected city -->
                 <div class="row border border-secondary">
                     <div class="card current col-12 p-0">
                         <div class="container-fluid d-inline-flex p-0">
@@ -49,6 +50,7 @@
 
                 <div class="row forecastText">5-Day Forecast:</div>
 
+                <!-- Display 5 day forecast for selected city -->
                 <div class="row justify-content-around p-0 m-0">
                     <div class="card col-2 day p-1">
                         <div class="card-body p-0">
@@ -95,14 +97,12 @@
                             <p class="card-text text-white pt-3 pb-3 forecastHumidity"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
